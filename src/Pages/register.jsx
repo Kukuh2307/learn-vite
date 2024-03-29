@@ -3,7 +3,10 @@ import FormRegister from "../Components/Fragments/FormRegister";
 import PropTypes from "prop-types";
 const RegisterPage = () => {
   return (
-    <AuthLayouts title="Register">
+    <AuthLayouts
+      title="Register"
+      describe="Create your account to get all features"
+    >
       <FormRegister />
     </AuthLayouts>
   );

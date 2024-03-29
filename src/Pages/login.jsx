@@ -3,7 +3,7 @@ import FormLogin from "../Components/Fragments/FormLogin";
 import PropTypes from "prop-types";
 const LoginPage = () => {
   return (
-    <AuthLayouts title="Login">
+    <AuthLayouts title="Login" describe="Welcome back. Sign in to your account">
       <FormLogin />
     </AuthLayouts>
   );
