@@ -12,7 +12,7 @@ const LoginPage = () => {
     </AuthLayouts>
   );
 };
-LoginPage.PropTypes = {
+LoginPage.propTypes = {
   children: PropTypes.node,
 };
 export default LoginPage;

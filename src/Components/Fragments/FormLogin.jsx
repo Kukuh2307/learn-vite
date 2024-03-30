@@ -18,7 +18,7 @@ const FormLogin = () => {
         placeholder="Masukkan password anda"
       />
       {/* tombol */}
-      <Button variant="bg-blue-600">Login</Button>
+      <Button variant="bg-blue-600 w-full">Login</Button>
     </form>
   );
 };

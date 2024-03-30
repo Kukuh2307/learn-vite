@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./Pages/login.jsx";
 import RegisterPage from "./Pages/register.jsx";
+import ProductPage from "./Pages/product.jsx";
 
 // membuat router path
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/regist",
     element: <RegisterPage />,
+  },
+  {
+    path: "/product",
+    element: <ProductPage />,
   },
 ]);
 

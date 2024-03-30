@@ -12,7 +12,7 @@ const RegisterPage = () => {
     </AuthLayouts>
   );
 };
-RegisterPage.PropTypes = {
+RegisterPage.propTypes = {
   children: PropTypes.node,
 };
 export default RegisterPage;

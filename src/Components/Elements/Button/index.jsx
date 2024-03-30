@@ -6,7 +6,7 @@ const Button = (props) => {
 
   return (
     <button
-      className={`py-2 px-4 font-semibold rounded-lg shadow-md w-full hover:bg-blue-500 text-white ${variant}`}
+      className={`py-2 px-4 font-semibold rounded-lg shadow-md hover:bg-blue-500 text-white ${variant}`}
       type="submit"
     >
       {children}
