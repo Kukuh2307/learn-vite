@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow mx-2 flex-col">
+    <div className="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow mx-2 flex-col my-3">
       {children}
     </div>
   );
@@ -34,11 +34,20 @@ const Body = (props) => {
 };
 
 const Footer = (props) => {
-  const { price } = props;
+  const { price, handleAddToCart, id } = props;
+
+  // variable untuk menampung props handle add to cart
+  const handleClick = () => {
+    handleAddToCart(id);
+  };
   return (
     <div className="flex justify-between items-center px-5 pb-5">
-      <span className="text-white font-bold text-xl">{price}</span>
-      <Button variant="bg-blue-600" className="max-w-xs">
+      <span className="text-white font-bold text-xl">
+        {/* membuat format rupiah */}
+        Rp.
+        {price.toLocaleString("id-ID", { styles: "currency", currency: "IDR" })}
+      </span>
+      <Button variant="bg-blue-600" className="max-w-xs" onClick={handleClick}>
         Add to Cart
       </Button>
     </div>
@@ -48,7 +57,9 @@ CardProduct.propTypes = {
   children: PropTypes.node.isRequired,
 };
 Footer.propTypes = {
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 Header.propTypes = {

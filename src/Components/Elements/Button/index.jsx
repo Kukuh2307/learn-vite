@@ -5,6 +5,7 @@ const Button = (props) => {
   const {
     children = "Kosong",
     variant = "bg-black",
+    // membuat fungsi on click untuk sementara
     onClick = () => {},
     type = "button",
   } = props;
@@ -13,7 +14,7 @@ const Button = (props) => {
     <button
       className={`py-2 px-4 font-semibold rounded-lg shadow-md hover:bg-blue-500 text-white ${variant}`}
       type={type}
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {children}
     </button>
