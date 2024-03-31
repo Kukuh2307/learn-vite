@@ -1,8 +1,18 @@
 import InputForm from "../Elements/Inputs";
 import Button from "../Elements/Button";
 const FormLogin = () => {
+  // membuat variable handle untuk di kirim ke child button
+  const handleLogin = (event) => {
+    event.preventDefault();
+    // console.log(event.target.email.value);
+    localStorage.setItem("email", event.target.email.value);
+    localStorage.setItem("password", event.target.password.value);
+    window.location.href = "/product";
+    // console.log("berhasil klik tombol melalui fungsi onClick");
+  };
   return (
-    <form action="">
+    // mengganti event form menjadi on submit
+    <form onSubmit={handleLogin}>
       {/* email */}
       <InputForm
         label="Email"
@@ -18,7 +28,10 @@ const FormLogin = () => {
         placeholder="Masukkan password anda"
       />
       {/* tombol */}
-      <Button variant="bg-blue-600 w-full">Login</Button>
+      {/* mengirim type button menjadi submit untuk dilakkukan handleLogin */}
+      <Button variant="bg-blue-600 w-full" type="submit">
+        Login
+      </Button>
     </form>
   );
 };
