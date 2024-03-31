@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import CardProduct from "../Components/Fragments/CardProduct";
 import Button from "../Components/Elements/Button";
+import Counter from "../Components/Fragments/Counter";
 
 const products = [
   {
@@ -54,6 +55,8 @@ const ProductPage = () => {
         ))}
         ;
       </div>
+      {/* menambahkan fragment untuk counter */}
+      <Counter></Counter>
     </Fragment>
   );
 };
