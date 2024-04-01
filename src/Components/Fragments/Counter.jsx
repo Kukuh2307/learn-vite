@@ -6,6 +6,21 @@ class Counter extends React.Component {
     this.state = {
       count: 0,
     };
+    console.log("constructor");
+  }
+
+  // componentDidMount mengimplementasikan ketika component di render pada saat awal load, digunakan untuk memanipulasi nilai dari API
+  componentDidMount() {
+    this.setState({ count: 2 });
+    console.log("componentDidMount");
+  }
+
+  // componentDidUpdate mengimplementasikan ketika component berda pada kondisi tertentu maka akan di update. pada contoh ketika nilai counter melebihi 5, counter akan dimulai dari 0
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+    if (this.state.count === 5) {
+      this.setState({ count: 0 });
+    }
   }
   render() {
     return (
@@ -17,6 +32,7 @@ class Counter extends React.Component {
         >
           +
         </button>
+        {console.log("render")}
       </div>
     );
   }

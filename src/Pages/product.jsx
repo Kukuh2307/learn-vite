@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import CardProduct from "../Components/Fragments/CardProduct";
 import Button from "../Components/Elements/Button";
+import Counter from "../Components/Fragments/Counter";
 
 const products = [
   {
@@ -128,6 +129,7 @@ const ProductPage = () => {
           </table>
         </div>
       </div>
+      <Counter></Counter>
     </Fragment>
   );
 };
