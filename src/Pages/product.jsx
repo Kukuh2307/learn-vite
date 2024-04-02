@@ -1,7 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import CardProduct from "../Components/Fragments/CardProduct";
 import Button from "../Components/Elements/Button";
-import Counter from "../Components/Fragments/Counter";
+// import Counter from "../Components/Fragments/Counter";
 
 const products = [
   {
@@ -34,13 +34,28 @@ const products = [
 const email = localStorage.getItem("email");
 
 const ProductPage = () => {
-  // menggunakan use state dan di tampilkan pada cart
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      qty: 1,
-    },
-  ]);
+  // menggunakan usestate dan untuk tampilkan pada cart
+  const [cart, setCart] = useState([]);
+
+  // usestate totalprice
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // useeffect didmount untuk memberikan nilai awal ketika browser pertama kali di refresh
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  }, []);
+
+  // useeffect untuk update total price yang berpatokan pada cart ada yang update, sedangkan cart sendiri akan update ketika tombol tambah add to cart di klik menggunakan const handleAddToCart
+  useEffect(() => {
+    if (cart.length >= 1) {
+      const tambah = cart.reduce((acc, item) => {
+        const product = products.find((product) => product.id === item.id);
+        return acc + product.price * item.qty;
+      }, 0);
+      setTotalPrice(tambah);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   // handle add to cart untuk menangani penambahan produk di cart dengan menambahkan qty, kemudian di kirim ke footer saat tombol add to cart di klik
   const handleAddToCart = (id) => {
@@ -71,7 +86,7 @@ const ProductPage = () => {
         </Button>
       </div>
       <div className="flex justify-center py-5">
-        <div className="w-3/4 flex flex-wrap">
+        <div className="w-4/6 flex flex-wrap">
           {/* https://source.unsplash.com/300x300?shoes */}
           {products.map((product) => (
             <CardProduct key={product.id}>
@@ -89,7 +104,7 @@ const ProductPage = () => {
           ))}
           ;
         </div>
-        <div className="w-1/4">
+        <div className="w-2/6">
           <h1 className="text-3xl font-bold text-blue-600 ml-5 mb-2">Cart</h1>
           <table className="text-left table-auto border-separate border-spacing-x-5">
             <thead>
@@ -125,11 +140,25 @@ const ProductPage = () => {
                   </tr>
                 );
               })}
+              <tr>
+                <td colSpan={3}>
+                  <b>Total Price</b>
+                </td>
+                <td>
+                  <b>
+                    Rp{" "}
+                    {totalPrice.toLocaleString("id-ID", {
+                      styles: "currency",
+                      currency: "IDR",
+                    })}
+                  </b>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <Counter></Counter>
+      {/* <Counter></Counter> */}
     </Fragment>
   );
 };
